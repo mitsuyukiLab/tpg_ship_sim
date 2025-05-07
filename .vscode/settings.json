@@ -1,0 +1,28 @@
+{
+    "python.analysis.extraPaths": [
+        "/usr/local/lib/python3.12/site-packages/"
+    ],
+    "python.analysis.completeFunctionParens": true,
+    "python.analysis.typeCheckingMode": "strict",
+    "python.analysis.diagnosticMode": "workspace",
+    //"python.languageServer": "Pylance",
+    "[python]": {
+        "editor.tabSize": 4,
+        "editor.defaultFormatter": "ms-python.black-formatter",
+        "editor.formatOnSave": true,
+        "editor.formatOnPaste": false,
+        "editor.formatOnType": false,
+        "editor.codeActionsOnSave": {
+            "source.organizeImports": "explicit"
+        }
+    },
+    "isort.args": [
+        "--profile",
+        "black"
+    ],
+    "flake8.args": [
+        "--max-line-length=100",
+        "--max-complexity=10",
+        "--ignore=E203,E501,W503"
+    ],
+}
