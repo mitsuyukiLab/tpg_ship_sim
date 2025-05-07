@@ -39,7 +39,7 @@ def get_TY_start_time(typhoon_data_path):
     df = df.sort("unixtime")
 
     # 台風番号をキーに、最初の発生時間を値とする辞書を作成
-    typhoon_start_times = df.groupby("TYPHOON NUMBER").agg(pl.col("unixtime").min())
+    typhoon_start_times = df.group_by("TYPHOON NUMBER").agg(pl.col("unixtime").min())
 
     # 辞書に変換
     typhoon_start_times_dict = {
