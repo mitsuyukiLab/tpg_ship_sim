@@ -540,7 +540,7 @@ def objective_value_calculation(
     ##############################################################################
 
     引数 :
-        tpg_ship (TPG_ship) : TPG ship
+        tpg_ship (TpgShip) : TPG ship
         st_base (Base) : Storage base
         sp_base (Base) : Supply base
         support_ship_1 (Support_ship) : Support ship 1
@@ -720,7 +720,7 @@ def simulation_result_to_df(
     ##############################################################################
 
     引数 :
-        tpg_ship (TPG_ship) : TPG ship
+        tpg_ship (TpgShip) : TPG ship
         st_base (Base) : Storage base
         sp_base (Base) : Supply base
         support_ship_1 (Support_ship) : Support ship 1
@@ -1163,7 +1163,7 @@ def run_simulation(cfg):
     operational_reserve_percentage = cfg.tpg_ship.operational_reserve_percentage
     standby_position = cfg.tpg_ship.standby_position
 
-    tpg_ship_1 = tpg_ship.TPG_ship(
+    tpg_ship_1 = tpg_ship.TpgShip(
         initial_position,
         hull_num,
         storage_method,
@@ -1392,9 +1392,7 @@ def objective(trial):
     config.storage_base.locate = stbase_list[stbase_locate]
     config.tpg_ship.initial_position = config.storage_base.locate
     # 貯蔵量に関する変更 (先に10万トン単位で決めてから1GWhあたり379トンとしてWhに変換)
-    stbase_max_storage_ton_100k = trial.suggest_int(
-        "stbase_max_storage_ton_100k", 1, 5
-    )
+    stbase_max_storage_ton_100k = trial.suggest_int("stbase_max_storage_ton_100k", 1, 5)
     stbase_max_storage_ton = stbase_max_storage_ton_100k * 100000
     config.storage_base.max_storage_wh = tank_capacity_ton_to_wh(
         stbase_max_storage_ton, config.tpg_ship.storage_method
@@ -1416,9 +1414,7 @@ def objective(trial):
     spbase_locate = trial.suggest_int("spbase_locate", 0, 3)
     config.supply_base.locate = spbase_list[spbase_locate]
     # 貯蔵量に関する変更 (先に10万トン単位で決めてから1GWhあたり379トンとしてWhに変換)
-    spbase_max_storage_ton_100k = trial.suggest_int(
-        "spbase_max_storage_ton_100k", 1, 5
-    )
+    spbase_max_storage_ton_100k = trial.suggest_int("spbase_max_storage_ton_100k", 1, 5)
     spbase_max_storage_ton = spbase_max_storage_ton_100k * 100000
     config.supply_base.max_storage_wh = tank_capacity_ton_to_wh(
         spbase_max_storage_ton, config.tpg_ship.storage_method

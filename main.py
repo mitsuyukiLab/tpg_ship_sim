@@ -33,7 +33,7 @@ def objective_value_calculation(
     ##############################################################################
 
     引数 :
-        tpg_ship (TPG_ship) : TPG ship
+        tpg_ship (TpgShip) : TPG ship
         st_base (Base) : Storage base
         sp_base (Base) : Supply base
         support_ship_1 (Support_ship) : Support ship 1
@@ -213,7 +213,7 @@ def simulation_result_to_df(
     ##############################################################################
 
     引数 :
-        tpg_ship (TPG_ship) : TPG ship
+        tpg_ship (TpgShip) : TPG ship
         st_base (Base) : Storage base
         sp_base (Base) : Supply base
         support_ship_1 (Support_ship) : Support ship 1
@@ -647,7 +647,7 @@ def main(cfg: DictConfig) -> None:
     operational_reserve_percentage = cfg.tpg_ship.operational_reserve_percentage
     standby_position = cfg.tpg_ship.standby_position
 
-    tpg_ship_1 = tpg_ship.TPG_ship(
+    tpg_ship_1 = tpg_ship.TpgShip(
         initial_position,
         hull_num,
         storage_method,

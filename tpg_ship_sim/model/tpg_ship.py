@@ -7,9 +7,9 @@ from geopy.distance import geodesic
 from geopy.point import Point
 
 
-class TPG_ship:
+class TpgShip:
     """
-    ############################### class TPGship ###############################
+    ############################### class TpgShip ###############################
 
     [ 説明 ]
 
@@ -18,7 +18,6 @@ class TPG_ship:
     台風発電船自体の能力や状態量もここで定義されることになります。
 
     ##############################################################################
-
     引数 :
         year (int) : シミュレーションを行う年
         time_step (int) : シミュレーションにおける時間の進み幅[hours]

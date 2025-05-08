@@ -59,7 +59,7 @@ def main(cfg: DictConfig) -> None:
     operational_reserve_percentage = cfg.tpg_ship.operational_reserve_percentage
     standby_position = cfg.tpg_ship.standby_position
 
-    tpg_ship_1 = tpg_ship.TPG_ship(
+    tpg_ship_1 = tpg_ship.TpgShip(
         initial_position,
         hull_num,
         storage_method,
