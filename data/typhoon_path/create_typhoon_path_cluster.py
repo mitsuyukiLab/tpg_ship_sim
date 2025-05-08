@@ -254,7 +254,7 @@ for i in range(len(resampled_trajectories)):
         )
 
 # クラスタリング
-n_clusters = 30  # クラスタ数 2012-2023年のデータで30クラスタ程度がちょうど良さそうであった　データ数が増えた場合適宜調整してね
+n_clusters = 30  # クラスタ数 2012-2023年のデータで30クラスタ程度がちょうど良さそうであった データ数が増えた場合適宜調整してね
 clustering = AgglomerativeClustering(
     n_clusters=n_clusters, metric="precomputed", linkage="average"
 )

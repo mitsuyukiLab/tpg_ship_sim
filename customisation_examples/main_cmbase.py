@@ -41,7 +41,7 @@ def main(cfg: DictConfig) -> None:
     generator_efficiency = cfg.tpg_ship.generator_efficiency
     generator_drag_coefficient = cfg.tpg_ship.generator_drag_coefficient
     generator_pillar_chord = cfg.tpg_ship.generator_pillar_chord
-    generator_pillar_max_tickness = cfg.tpg_ship.generator_pillar_max_tickness
+    generator_pillar_max_thickness = cfg.tpg_ship.generator_pillar_max_thickness
     generator_pillar_width = generator_turbine_radius + 1
     generator_num = cfg.tpg_ship.generator_num
     sail_area = cfg.tpg_ship.sail_area
@@ -72,7 +72,7 @@ def main(cfg: DictConfig) -> None:
         generator_efficiency,
         generator_drag_coefficient,
         generator_pillar_chord,
-        generator_pillar_max_tickness,
+        generator_pillar_max_thickness,
         generator_pillar_width,
         generator_num,
         sail_area,

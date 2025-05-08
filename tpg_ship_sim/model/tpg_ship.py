@@ -43,10 +43,10 @@ class TpgShip:
 
         speed_kt (float) : その時刻での台風発電船の船速(kt)
         target_name (str) : 目標地点の名前。台風の場合は番号の文字列入力。
-        base_lat (float) : 拠点の緯度　※現段階では外部から入力が必要。調査で適当な値が求まったらそれを初期代入する予定。
-        base_lon (float) : 拠点の経度　※現段階では外部から入力が必要。調査で適当な値が求まったらそれを初期代入する予定。
-        standby_lat (float) : 待機位置の緯度　※現段階では外部から入力が必要。調査で適当な値が求まったらそれを初期代入する予定。
-        standby_lon (float) : 待機位置の経度　※現段階では外部から入力が必要。調査で適当な値が求まったらそれを初期代入する予定。
+        base_lat (float) : 拠点の緯度 ※現段階では外部から入力が必要。調査で適当な値が求まったらそれを初期代入する予定。
+        base_lon (float) : 拠点の経度 ※現段階では外部から入力が必要。調査で適当な値が求まったらそれを初期代入する予定。
+        standby_lat (float) : 待機位置の緯度 ※現段階では外部から入力が必要。調査で適当な値が求まったらそれを初期代入する予定。
+        standby_lon (float) : 待機位置の経度 ※現段階では外部から入力が必要。調査で適当な値が求まったらそれを初期代入する予定。
         ship_lat (float) : その時刻での台風発電船の緯度
         ship_lon (float) : その時刻での台風発電船の経度
         target_lat (float) : 目標地点の緯度
@@ -59,7 +59,7 @@ class TpgShip:
         next_ship_TY_dis (float) : time_step後の目標台風と台風発電船の距離(km)。ない場合はNaN。
         brance_condition (str) : 台風発電船が行動分岐のどの分岐になったかを示す
 
-        distance_judge_hours (int) : 追従判断基準時間。発電船にとって台風が遠いか近いかを判断する基準。　※本プログラムでは使用しない
+        distance_judge_hours (int) : 追従判断基準時間。発電船にとって台風が遠いか近いかを判断する基準。 ※本プログラムでは使用しない
         judge_energy_storage_per (int) : 発電船が帰港判断をする蓄電割合。
         typhoon_effective_range (float) : 発電船が台風下での航行となる台風中心からの距離[km]
         govia_base_judge_energy_storage_per (int) : 発電船が拠点経由で目的地に向かう判断をする蓄電割合。
@@ -72,9 +72,9 @@ class TpgShip:
         TY_tracking_speed (float) : 台風を追いかける時の船速(kt)
         speed_kt (float) : その時の船速(kt)
 
-        forecast_data (dataflame) : 各時刻の台風の予想座標がわかるデータ。台風番号、時刻、座標を持つ　※Forecasterからもらう必要がある。
-        TY_start_time_list (list) : 全ての台風の発生時刻のリスト　※現段階では外部から入力が必要。調査で適当な値が求まったらそれを初期代入する予定。
-        forecast_weight (float) : 台風を評価する際の式で各項につける重みの数値。他の項は(100-forecast_weight)。　※現段階では外部から入力が必要。調査で適当な値が求まったらそれを初期代入する予定。
+        forecast_data (dataflame) : 各時刻の台風の予想座標がわかるデータ。台風番号、時刻、座標を持つ ※Forecasterからもらう必要がある。
+        TY_start_time_list (list) : 全ての台風の発生時刻のリスト ※現段階では外部から入力が必要。調査で適当な値が求まったらそれを初期代入する予定。
+        forecast_weight (float) : 台風を評価する際の式で各項につける重みの数値。他の項は(100-forecast_weight)。 ※現段階では外部から入力が必要。調査で適当な値が求まったらそれを初期代入する予定。
 
 
 
@@ -102,7 +102,7 @@ class TpgShip:
         generator_efficiency,
         generator_drag_coefficient,
         generator_pillar_chord,
-        generator_pillar_max_tickness,
+        generator_pillar_max_thickness,
         generator_pillar_width,
         generator_num,
         sail_area,
@@ -132,7 +132,7 @@ class TpgShip:
         self.generator_efficiency = generator_efficiency
         self.generator_drag_coefficient = generator_drag_coefficient
         self.generator_pillar_chord = generator_pillar_chord
-        self.generator_pillar_max_tickness = generator_pillar_max_tickness
+        self.generator_pillar_max_thickness = generator_pillar_max_thickness
         self.generator_pillar_width = generator_pillar_width
         self.generator_num = generator_num
         self.sail_area = sail_area
@@ -190,7 +190,7 @@ class TpgShip:
                 "generator_efficiency": [self.generator_efficiency],
                 "generator_drag_coefficient": [self.generator_drag_coefficient],
                 "generator_pillar_chord": [self.generator_pillar_chord],
-                "generator_pillar_max_tickness": [self.generator_pillar_max_tickness],
+                "generator_pillar_max_thickness": [self.generator_pillar_max_thickness],
                 "generator_pillar_width": [self.generator_pillar_width],
                 "generator_num": [self.generator_num],
                 "generator_rated_output_w": [self.generator_rated_output_w],
@@ -240,7 +240,7 @@ class TpgShip:
                 pl.col("generator_efficiency").cast(pl.Float64),
                 pl.col("generator_drag_coefficient").cast(pl.Float64),
                 pl.col("generator_pillar_chord").cast(pl.Float64),
-                pl.col("generator_pillar_max_tickness").cast(pl.Float64),
+                pl.col("generator_pillar_max_thickness").cast(pl.Float64),
                 pl.col("generator_pillar_width").cast(pl.Float64),
                 pl.col("generator_num").cast(pl.Int64),
                 pl.col("generator_rated_output_w").cast(pl.Float64),
@@ -306,14 +306,14 @@ class TpgShip:
             dwt = storage / 5000 * 0.0898 / 47.4
 
         elif storage_method == 3:  # メタン貯蔵
-            # 物性より計算　メタン1molの完全燃焼で802kJ=802/3600kWh
+            # 物性より計算 メタン1molの完全燃焼で802kJ=802/3600kWh
             # mol数の計算
             mol = storage / ((802 / 3600) * 1000)
             # メタンの分子量16.04g/molを用いてtに変換
             dwt = mol * 16.04 / 10**6
 
         elif storage_method == 4:  # メタノール貯蔵
-            # 物性より計算　メタノール1molの完全燃焼で726.2kJ=726.2/3600kWh
+            # 物性より計算 メタノール1molの完全燃焼で726.2kJ=726.2/3600kWh
             # mol数の計算
             mol = storage / ((726.2 / 3600) * 1000)
             # メタノールの分子量32.04g/molを用いてtに変換
@@ -1330,7 +1330,7 @@ class TpgShip:
     # 船の機能としては発電量計算、消費電力量計算、予報データから台風の目標地点の決定、timestep後の時刻における追従対象台風の座標取得のみ？
     # 状態量を更新するような関数はメソッドではない？
 
-    # とりあえず状態量の計算をしている関数がわかるように　#状態量計算　をつけておく
+    # とりあえず状態量の計算をしている関数がわかるように #状態量計算 をつけておく
     def find_nearest_wind_point(self, wind_data):
         """
         ############################ def find_nearest_wind_point ############################
@@ -1781,17 +1781,20 @@ class TpgShip:
             cd = (
                 2
                 * (
-                    self.generator_pillar_chord / self.generator_pillar_max_tickness
+                    self.generator_pillar_chord / self.generator_pillar_max_thickness
                     + 2
                     + 60
-                    + (self.generator_pillar_max_tickness / self.generator_pillar_chord)
+                    + (
+                        self.generator_pillar_max_thickness
+                        / self.generator_pillar_chord
+                    )
                     ** 3
                 )
                 * cf
             )
 
             # 単位幅あたりの抵抗力
-            d = 0.5 * cd * rho * ship_speed_mps**2 * self.generator_pillar_max_tickness
+            d = 0.5 * cd * rho * ship_speed_mps**2 * self.generator_pillar_max_thickness
 
             # 発電機の支柱の抵抗力
             da = d * self.generator_pillar_width
@@ -1929,7 +1932,7 @@ class TpgShip:
         x1 = 10 + self.ship_lat  # 北緯(10+船の緯度)度
         y1 = 0 + self.ship_lon  # 東経(0+船の経度)度
 
-        # 外積計算　正なら左回り、負なら右回り
+        # 外積計算 正なら左回り、負なら右回り
         # 船の座標 (回転中心)
         x2 = self.ship_lat
         y2 = self.ship_lon
@@ -2002,7 +2005,7 @@ class TpgShip:
 
         以上二つの数値を用いて評価用の数値を以下のように計算します。
 
-        評価数値　＝　予想発電時間＊(forecast_weight) - 台風補足時間＊(100 - forecast_weight)
+        評価数値 ＝ 予想発電時間＊(forecast_weight) - 台風補足時間＊(100 - forecast_weight)
 
         これを予報データ内の全データで計算して最も評価数値が大きかったものを選びそれを返します。
 
@@ -2042,7 +2045,7 @@ class TpgShip:
         # 該当時刻内のデータの抜き出し
         typhoon_data_forecast = self.forecast_data
 
-        # 陸地認識フェーズ　陸地内に入っているデータの消去
+        # 陸地認識フェーズ 陸地内に入っているデータの消去
         typhoon_data_forecast = typhoon_data_forecast.filter(
             (
                 ((pl.col("FORE_LAT") >= 0) & (pl.col("FORE_LAT") <= 13))
@@ -2500,7 +2503,7 @@ class TpgShip:
             self.GS_loss_judge = 0  # 0なら消費していない、1なら消費
 
             # 発電船状態入力
-            self.ship_state = 0  # 通常航行、待機 = 0 , 発電状態　= 1 , 台風追従　= 2 , 台風低速追従 = 2.5 , 拠点回航 = 3 , 待機位置回航 = 4
+            self.ship_state = 0  # 通常航行、待機 = 0 , 発電状態 = 1 , 台風追従 = 2 , 台風低速追従 = 2.5 , 拠点回航 = 3 , 待機位置回航 = 4
 
         else:
             # 発電の有無の判断
@@ -2509,7 +2512,7 @@ class TpgShip:
             self.GS_loss_judge = 1  # 0なら消費していない、1なら消費
 
             # 発電船状態入力
-            self.ship_state = 4  # 通常航行、待機 = 0 , 発電状態　= 1 , 台風追従　= 2 , 台風低速追従 = 2.5 , 拠点回航 = 3 , 待機位置回航 = 4
+            self.ship_state = 4  # 通常航行、待機 = 0 , 発電状態 = 1 , 台風追従 = 2 , 台風低速追従 = 2.5 , 拠点回航 = 3 , 待機位置回航 = 4
 
     def return_standby_action(self, time_step, Storage_base):
         """
@@ -2583,7 +2586,7 @@ class TpgShip:
                 self.electric_propulsion_storage_state = str("charge in Standby")
 
             # 発電船状態入力
-            self.ship_state = 0  # 通常航行、待機 = 0 , 発電状態　= 1 , 台風追従　= 2 , 台風低速追従 = 2.5 , 拠点回航 = 3 , 待機位置回航 = 4
+            self.ship_state = 0  # 通常航行、待機 = 0 , 発電状態 = 1 , 台風追従 = 2 , 台風低速追従 = 2.5 , 拠点回航 = 3 , 待機位置回航 = 4
 
         else:
             # 発電の有無の判断
@@ -2592,7 +2595,7 @@ class TpgShip:
             self.GS_loss_judge = 1  # 0なら消費していない、1なら消費
 
             # 発電船状態入力
-            self.ship_state = 4  # 通常航行、待機 = 0 , 発電状態　= 1 , 台風追従　= 2 , 台風低速追従 = 2.5 , 拠点回航 = 3 , 待機位置回航 = 4
+            self.ship_state = 4  # 通常航行、待機 = 0 , 発電状態 = 1 , 台風追従 = 2 , 台風低速追従 = 2.5 , 拠点回航 = 3 , 待機位置回航 = 4
 
     def typhoon_chase_action(self, time_step, Storage_base):
         """
@@ -2649,7 +2652,7 @@ class TpgShip:
             self.GS_loss_judge = 0
 
             # 発電船状態入力
-            self.ship_state = 1  # 通常航行、待機 = 0 , 発電状態　= 1 , 台風追従　= 2 , 台風低速追従 = 2.5 , 拠点回航 = 3 , 待機位置回航 = 4
+            self.ship_state = 1  # 通常航行、待機 = 0 , 発電状態 = 1 , 台風追従 = 2 , 台風低速追従 = 2.5 , 拠点回航 = 3 , 待機位置回航 = 4
 
         else:
 
@@ -2660,7 +2663,7 @@ class TpgShip:
             self.GS_loss_judge = 1
 
             # 発電船状態入力
-            self.ship_state = 2  # 通常航行、待機 = 0 , 発電状態　= 1 , 台風追従　= 2 , 台風低速追従 = 2.5 , 拠点回航 = 3 , 待機位置回航 = 4
+            self.ship_state = 2  # 通常航行、待機 = 0 , 発電状態 = 1 , 台風追従 = 2 , 台風低速追従 = 2.5 , 拠点回航 = 3 , 待機位置回航 = 4
 
             # 座標間距離を用いた発電の有無のチェック用数値
             self.distance_check = 1  # 1ならチェック必要
@@ -2903,7 +2906,7 @@ class TpgShip:
 
                 #    self.brance_condition = "tracking typhoon at low speed from a distance"
                 # 発電船状態入力
-                #    self.ship_state = 2.5  #通常航行、待機 = 0 , 発電状態　= 1 , 台風追従　= 2 , 台風低速追従 = 2.5 , 拠点回航 = 3 , 待機位置回航 = 4
+                #    self.ship_state = 2.5  #通常航行、待機 = 0 , 発電状態 = 1 , 台風追従 = 2 , 台風低速追従 = 2.5 , 拠点回航 = 3 , 待機位置回航 = 4
 
                 #    self.target_lat = target_TY_data[0,"FORE_LAT"]
                 #    self.target_lon = target_TY_data[0,"FORE_LON"]
@@ -2937,7 +2940,7 @@ class TpgShip:
                 self.GS_gene_judge = 1
                 self.GS_loss_judge = 0
 
-                self.ship_state = 1  # 通常航行、待機 = 0 , 発電状態　= 1 , 台風追従　= 2 , 台風低速追従 = 2.5 , 拠点回航 = 3 , 待機位置回航 = 4
+                self.ship_state = 1  # 通常航行、待機 = 0 , 発電状態 = 1 , 台風追従 = 2 , 台風低速追従 = 2.5 , 拠点回航 = 3 , 待機位置回航 = 4
 
             else:
                 # self.brance_condition = "beyond 50km of a typhoon following"
@@ -2945,13 +2948,13 @@ class TpgShip:
                 self.GS_gene_judge = 0
                 self.GS_loss_judge = 1
 
-                self.ship_state = 2  # 通常航行、待機 = 0 , 発電状態　= 1 , 台風追従　= 2 , 台風低速追従 = 2.5 , 拠点回航 = 3 , 待機位置回航 = 4
+                self.ship_state = 2  # 通常航行、待機 = 0 , 発電状態 = 1 , 台風追従 = 2 , 台風低速追従 = 2.5 , 拠点回航 = 3 , 待機位置回航 = 4
 
         ##########################################################
 
         ############
 
-        # 現在この関数での出力は次の時刻での　船の状態　追従目標　船速　座標　単位時間消費電力・発電量　保有電力　保有電力割合　目標地点との距離　となっている
+        # 現在この関数での出力は次の時刻での 船の状態 追従目標 船速 座標 単位時間消費電力・発電量 保有電力 保有電力割合 目標地点との距離 となっている
 
         # その時刻〜次の時刻での消費仕事量計算
         self.loss_work = (
@@ -3120,7 +3123,7 @@ class TpgShip:
             # エネルギーキャリア関連のコスト[円]
             # 原料となるCO2のコスト[億円] 1トンあたりの価格が200ドルとし、1ドル=160円とする。
             # 初期のmax_storage[Wh]分のキャリア作成に必要な量に加え、total_gene_carrier[Wh]で作成したぶんのCO2を補填するものとする。
-            # 物性より計算　メタン1molの完全燃焼で802kJ=802/3600kWh
+            # 物性より計算 メタン1molの完全燃焼で802kJ=802/3600kWh
             # mol数の計算
             mol_max_storage = self.max_storage / ((802 / 3600) * 1000)
             mol_consume = self.total_gene_carrier / ((802 / 3600) * 1000)
@@ -3138,7 +3141,7 @@ class TpgShip:
             # エネルギーキャリア関連のコスト[円]
             # 原料となるCO2のコスト[億円] 1トンあたりの価格が200ドルとし、1ドル=160円とする。
             # 初期のmax_storage[Wh]分のキャリア作成に必要な量に加え、total_gene_carrier[Wh]で作成したぶんのCO2を補填するものとする。
-            # 物性より計算　メタノール1molの完全燃焼で726.2kJ=726.2/3600kWh
+            # 物性より計算 メタノール1molの完全燃焼で726.2kJ=726.2/3600kWh
             # mol数の計算
             mol_max_storage = self.max_storage / ((726.2 / 3600) * 1000)
             mol_consume = self.total_gene_carrier / ((726.2 / 3600) * 1000)
@@ -3166,7 +3169,7 @@ class TpgShip:
             CO2_t = total_mol * 8 * 44 / 10**6
             self.carrier_cost = 200 * CO2_t * 160 / 10**8
 
-        # 電動機モーターの価格[円]　船体価格の10%
+        # 電動機モーターの価格[円] 船体価格の10%
         motor_cost = 0.1 * self.hull_cost
 
         # 船の建造費用[億円]

@@ -18,7 +18,7 @@ tpg_ship:
   generator_efficiency: 0.3 # 発電機の効率
   generator_drag_coefficient: 0.3 # 発電機の発電時の抗力係数
   generator_pillar_chord: 5 # 発電機支柱断面の流線型物体のコード長[m]
-  generator_pillar_max_tickness: 1 # 発電機支柱断面の流線型物体の最大厚さ[m]
+  generator_pillar_max_thickness: 1 # 発電機支柱断面の流線型物体の最大厚さ[m]
   generator_pillar_width: 13 # 発電機支柱の幅(船体から飛び出ている長さ)[m]
   generator_num: 2 # 発電機の数
   sail_area: 5700 # 帆の面積[m^2]
@@ -28,7 +28,7 @@ tpg_ship:
   ship_return_speed_kt: 12 # 拠点帰港時の船速[kt]
   ship_max_speed_kt: 20 # 台風発電船の最大船速[kt]
   #TPG ship operational rule model
-  forecast_weight: 23 # 台風の評価数値の計算用重み 「評価数値　＝　予想発電時間＊(forecast_weight) - 台風補足時間＊(100 - forecast_weight)」
+  forecast_weight: 23 # 台風の評価数値の計算用重み 「評価数値 ＝ 予想発電時間＊(forecast_weight) - 台風補足時間＊(100 - forecast_weight)」
   typhoon_effective_range: 100 # 台風発電船が台風で発電できる台風中心からの距離[km]
   govia_base_judge_energy_storage_per: 41 # 蓄電量がこの値を上回ると寄港判断を行う[%]
   judge_time_times: 1.80 # 台風に追いつけるとみなす時間（目的地への台風の到着時間＊judge_time_times）の設定

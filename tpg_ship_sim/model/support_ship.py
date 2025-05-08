@@ -59,7 +59,7 @@ class Support_ship:
     total_consumption_elect = 0
     total_received_elect = 0
 
-    # コスト関係　単位は億円
+    # コスト関係 単位は億円
     building_cost = 0
     maintenance_cost = 0
     transportation_cost = 0
@@ -184,14 +184,14 @@ class Support_ship:
             dwt = storage / 5000 * 0.0898 / 47.4
 
         elif storage_method == 3:  # メタン貯蔵
-            # 物性より計算　メタン1molの完全燃焼で802kJ=802/3600kWh
+            # 物性より計算 メタン1molの完全燃焼で802kJ=802/3600kWh
             # mol数の計算
             mol = storage / ((802 / 3600) * 1000)
             # メタンの分子量16.04g/molを用いてtに変換
             dwt = mol * 16.04 / 10**6
 
         elif storage_method == 4:  # メタノール貯蔵
-            # 物性より計算　メタノール1molの完全燃焼で726.2kJ=726.2/3600kWh
+            # 物性より計算 メタノール1molの完全燃焼で726.2kJ=726.2/3600kWh
             # mol数の計算
             mol = storage / ((726.2 / 3600) * 1000)
             # メタノールの分子量32.04g/molを用いてtに変換
@@ -901,7 +901,7 @@ class Support_ship:
                 + 500000 * self.hull_L_oa * self.hull_B
             )  # タンカーと同価格
 
-        # 電動機モーターの価格[円]　船体価格の10%
+        # 電動機モーターの価格[円] 船体価格の10%
         motor_cost = 0.1 * self.hull_cost
         # バッテリーの価格[円] 75ドル/kWhで1ドル=160円 240MWhの電池を必要分搭載するとする。
         n_battery = math.ceil(

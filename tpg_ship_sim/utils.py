@@ -246,7 +246,7 @@ def draw_map(
         # 船速取得
         speed = str(format(ship_typhoon_route_data[j, "SHIP SPEED[kt]"], ".1f"))
 
-        # 状態表示　移動・発電・待機
+        # 状態表示 移動・発電・待機
         if (
             (ship_typhoon_route_data[j, "SHIP SPEED[kt]"] == 0)
             & (ship_typhoon_route_data[j, "TIMESTEP POWER GENERATION[Wh]"] == 0)

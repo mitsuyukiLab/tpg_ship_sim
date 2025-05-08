@@ -52,7 +52,7 @@ class Base:
     total_quantity_received = 0
     total_supply = 0
 
-    # コスト関連　単位は億円
+    # コスト関連 単位は億円
     unit_price = 0
     building_cost = 0
     maintenance_cost = 0
@@ -354,7 +354,7 @@ class Base:
         elif TPGship1.storage_method == 2:  # MCH貯蔵 = タンカー型
             # 10万トン貯蔵できるタンクのコストを10億円とする
             tank_cost = 10**9
-            # MCHをWhからtに変換　1GWh = 379t
+            # MCHをWhからtに変換 1GWh = 379t
             total_supply_t = self.max_storage / 10**9 * 379
             need_capacity = total_supply_t
             tank_num = math.ceil(need_capacity / tank_capacity)
@@ -380,7 +380,7 @@ class Base:
             # 10万トン貯蔵できるタンクのコストを30億円とする
             tank_cost = 3.0 * 10**9
             # メタノールをWhからtに変換
-            # 物性より計算　メタノール1molの完全燃焼で726.2kJ=726.2/3600kWh
+            # 物性より計算 メタノール1molの完全燃焼で726.2kJ=726.2/3600kWh
             # mol数の計算
             methanol_mol = self.max_storage / ((726.2 / 3600) * 1000)
             # メタノールの分子量32.04g/molを用いてtに変換
@@ -427,7 +427,7 @@ class Base:
                 self.profit = (self.total_supply_list[-1] / 1000) * self.unit_price
 
             elif TPGship1.storage_method == 2:  # MCH貯蔵 = タンカー型
-                # MCHをWhからtに変換　1GWh = 379t
+                # MCHをWhからtに変換 1GWh = 379t
                 total_supply_t = self.total_supply_list[-1] / 10**9 * 379
                 # MCHの価格を1tあたり水素を679[Nm3]生成するとして、量を計算
                 total_supply_hydrogen = total_supply_t * 679
@@ -450,7 +450,7 @@ class Base:
 
             elif TPGship1.storage_method == 4:  # メタノール貯蔵 = タンカー型
                 # メタノールをWhからtに変換
-                # 物性より計算　メタノール1molの完全燃焼で726.2kJ=726.2/3600kWh
+                # 物性より計算 メタノール1molの完全燃焼で726.2kJ=726.2/3600kWh
                 # mol数の計算
                 methanol_mol = self.total_supply_list[-1] / ((726.2 / 3600) * 1000)
                 # メタノールの分子量32.04g/molを用いてtに変換

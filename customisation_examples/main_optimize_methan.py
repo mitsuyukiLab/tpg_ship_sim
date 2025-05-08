@@ -62,14 +62,14 @@ def cal_dwt(storage_method, storage):
         dwt = storage / 5000 * 0.0898 / 47.4
 
     elif storage_method == 3:  # メタン貯蔵
-        # 物性より計算　メタン1molの完全燃焼で802kJ=802/3600kWh
+        # 物性より計算 メタン1molの完全燃焼で802kJ=802/3600kWh
         # mol数の計算
         mol = storage / ((802 / 3600) * 1000)
         # メタンの分子量16.04g/molを用いてtに変換
         dwt = mol * 16.04 / 10**6
 
     elif storage_method == 4:  # メタノール貯蔵
-        # 物性より計算　メタノール1molの完全燃焼で726.2kJ=726.2/3600kWh
+        # 物性より計算 メタノール1molの完全燃焼で726.2kJ=726.2/3600kWh
         # mol数の計算
         mol = storage / ((726.2 / 3600) * 1000)
         # メタノールの分子量32.04g/molを用いてtに変換
@@ -418,7 +418,7 @@ def sp_ship_EP_storage_cal(
     # バッテリー容量のマージン倍率
     margin = 1.2  # 20%のマージン
 
-    # 輸送船のバッテリー容量xの計算の方程式定義　Xがバッテリー容量[t]であることに注意
+    # 輸送船のバッテリー容量xの計算の方程式定義 Xがバッテリー容量[t]であることに注意
     def equation(X):
         # value = max_storage_ton + X
         # print(f"x: {X}, max_storage_ton + x: {value}")
@@ -438,7 +438,7 @@ def sp_ship_EP_storage_cal(
         print(EP_storage_solution)
         raise ValueError("計算結果が負の値です。入力値を確認してください。")
 
-    # バッテリー容量をWhに変換する　重量エネルギー密度1000Wh/kgの電池を使うこととする。
+    # バッテリー容量をWhに変換する 重量エネルギー密度1000Wh/kgの電池を使うこととする。
     sp_ship_EP_storage = min(EP_storage_solution) * 1000 * 1000
 
     # バッテリー容量をもとに航続能力を計算してチェック equation(x)の時のdistanceを求めることになる
@@ -552,7 +552,7 @@ def objective_value_calculation(
     #############################################################################
     """
     # コスト計算(損失)
-    # 運用年数　simulation_start_time、simulation_end_time (ex."2023-01-01 00:00:00")から年数を計算 365で割って端数切り上げ
+    # 運用年数 simulation_start_time、simulation_end_time (ex."2023-01-01 00:00:00")から年数を計算 365で割って端数切り上げ
     operating_years = math.ceil(
         (
             datetime.strptime(simulation_end_time, "%Y-%m-%d %H:%M:%S")
@@ -729,7 +729,7 @@ def simulation_result_to_df(
     #############################################################################
     """
     # コスト計算(損失)
-    # 運用年数　simulation_start_time、simulation_end_time (ex."2023-01-01 00:00:00")から年数を計算 365で割って端数切り上げ
+    # 運用年数 simulation_start_time、simulation_end_time (ex."2023-01-01 00:00:00")から年数を計算 365で割って端数切り上げ
     operating_years = math.ceil(
         (
             datetime.strptime(simulation_end_time, "%Y-%m-%d %H:%M:%S")
@@ -823,8 +823,8 @@ def simulation_result_to_df(
                 float(tpg_ship.generator_drag_coefficient)
             ],
             "T_generator_pillar_chord": [float(tpg_ship.generator_pillar_chord)],
-            "T_generator_pillar_max_tickness": [
-                float(tpg_ship.generator_pillar_max_tickness)
+            "T_generator_pillar_max_thickness": [
+                float(tpg_ship.generator_pillar_max_thickness)
             ],
             "T_generating_speed[kt]": [float(tpg_ship.generating_speed_kt)],
             "T_tpgship_return_speed[kt]": [float(tpg_ship.nomal_ave_speed)],
@@ -1026,7 +1026,7 @@ def simulation_result_to_df(
             pl.col("T_generator_efficiency").cast(pl.Float64),
             pl.col("T_generator_drag_coefficient").cast(pl.Float64),
             pl.col("T_generator_pillar_chord").cast(pl.Float64),
-            pl.col("T_generator_pillar_max_tickness").cast(pl.Float64),
+            pl.col("T_generator_pillar_max_thickness").cast(pl.Float64),
             pl.col("T_generating_speed[kt]").cast(pl.Float64),
             pl.col("T_tpgship_return_speed[kt]").cast(pl.Float64),
             pl.col("T_forecast_weight").cast(pl.Float64),
@@ -1139,7 +1139,7 @@ def run_simulation(cfg):
     generator_efficiency = cfg.tpg_ship.generator_efficiency
     generator_drag_coefficient = cfg.tpg_ship.generator_drag_coefficient
     generator_pillar_chord = cfg.tpg_ship.generator_pillar_chord
-    generator_pillar_max_tickness = cfg.tpg_ship.generator_pillar_max_tickness
+    generator_pillar_max_thickness = cfg.tpg_ship.generator_pillar_max_thickness
     generator_pillar_width = generator_turbine_radius + 1
     generator_num = cfg.tpg_ship.generator_num
     sail_area = cfg.tpg_ship.sail_area
@@ -1180,7 +1180,7 @@ def run_simulation(cfg):
         generator_efficiency,
         generator_drag_coefficient,
         generator_pillar_chord,
-        generator_pillar_max_tickness,
+        generator_pillar_max_thickness,
         generator_pillar_width,
         generator_num,
         sail_area,
@@ -1499,7 +1499,7 @@ def main(cfg: DictConfig) -> None:
         load_if_exists=True,
     )
 
-    # ログ出力を無効化　ターミナルが落ちることがあったため予防措置
+    # ログ出力を無効化 ターミナルが落ちることがあったため予防措置
     optuna.logging.disable_default_handler()
 
     n_jobs = int(os.cpu_count())
